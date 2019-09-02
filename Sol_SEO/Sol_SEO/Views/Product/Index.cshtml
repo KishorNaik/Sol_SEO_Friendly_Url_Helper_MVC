@@ -1,0 +1,43 @@
+﻿@model Sol_SEO.ViewModel.ProductViewModel
+@using static Sol_SEO.Helper.SeoHelper
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table table-striped table-bordered table-dark table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.ListProducts)
+        {
+            <tr>
+                <td>
+                   <label>@item.Id</label>
+                </td>
+                <td>
+                   <label>@item.ProductName</label>
+                </td>
+                <td>
+                    @{ 
+
+                        // Make Seo Friendly Content
+                        string seoContent = await GetFriendlyTitle(item.ProductName);
+                    }
+                   <a class="btn btn-danger" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" asp-route-seocontent="@seoContent">Detail</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

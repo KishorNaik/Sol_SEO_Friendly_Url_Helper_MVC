@@ -1,0 +1,29 @@
+﻿@model Sol_SEO.ViewModel.ProductViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ProductModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Id)
+        </dt>
+        <dd class = "col-sm-10">
+           <label>@Model.Product.Id</label>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </dt>
+        <dd class="col-sm-10">
+            <label>@Model.Product.ProductName</label>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-controller="Product" asp-action="Index">Back to List</a>
+</div>
